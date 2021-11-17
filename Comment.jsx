@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useEffect, } from "react";
 import { useParams} from "react-router-dom";
+import { viewComment } from "../actions";
+import { useSelector, useDispatch } from "react-redux";
 
-  const Comment =() =>{
-    const {id}= useParams();
-    console.log(id)
-    const [comment, setComment] = React.useState([]);
+function Comment (props) {
+  const dispatch = useDispatch();
+  const viewComm = useSelector((state) => state.viewComments.viewComment);  
+  
+  const {id}=useParams(); 
 
     useEffect(()=>{
       loadUser();
@@ -14,7 +17,8 @@ import { useParams} from "react-router-dom";
       const loadUser= async () =>{
         const res = await axios.get(`http://localhost:3008/posts/${id}/comments` );
         console.log(res)
-        setComment(res.data)
+         const commentAction= viewComment(res.data)
+         dispatch(commentAction)
     }
 
     return(
@@ -24,7 +28,7 @@ import { useParams} from "react-router-dom";
         <div>
           <ul>
             <h5 className ="text-danger">postID</h5>
-              {comment.map(post =>(
+              {viewComm.map(post =>(
                 <li key={post.id}>{post.postId}</li>
         ))}
           </ul>
@@ -32,7 +36,7 @@ import { useParams} from "react-router-dom";
           <div>
           <ul>
             <h5 className ="text-danger">ID</h5>
-              {comment.map(post =>(
+              {viewComm.map(post =>(
                 <li key={post.id}>{post.id}</li>
         ))}
          </ul>
@@ -40,7 +44,7 @@ import { useParams} from "react-router-dom";
         <div>
           <ul>
             <h5 className ="text-danger">name</h5>
-              {comment.map(post =>(
+              {viewComm.map(post =>(
                 <li key={post.id}>{post.name}</li>
         ))}
          </ul>

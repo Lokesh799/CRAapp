@@ -2,8 +2,8 @@
   "users": [
     {
       "name": "Leanne Heen",
-      "username": "Bret kumar",
-      "email": "Sincere@april.biz",
+      "username": "Bret kumar rahul patel",
+      "email": "Sincere@april.bizrrr",
       "address": {
         "street": "Kulas Light",
         "suite": "Apt. 556",
@@ -26,8 +26,8 @@
     {
       "id": 2,
       "name": "Ervin Howell",
-      "username": "Antonette",
-      "email": "Shanna@melissa.tv",
+      "username": "Antonette patel",
+      "email": "Shanna@melissa.tv djalskjdasjf",
       "address": {
         "street": "Victor Plains",
         "suite": "Suite 879",
@@ -239,6 +239,41 @@
       "id": "12",
       "username": "kapil jagatiji",
       "email": "kapiljagati@gmail.com"
+    },
+    {
+      "id": "13",
+      "username": "rohit",
+      "email": "rohit@gmail.com"
+    },
+    {
+      "id": "14",
+      "username": "patel",
+      "email": "patel43@gmail.com"
+    },
+    {
+      "id": "15",
+      "username": "devedra",
+      "email": "kfksjfhkfj"
+    },
+    {
+      "id": "17",
+      "username": "patelji",
+      "email": "patel43@gmail.com"
+    },
+    {
+      "id": "18",
+      "username": "deepak patel",
+      "email": "deepak@gmail.com"
+    },
+    {
+      "id": "20",
+      "username": "pawan patel",
+      "email": "pawanpatel43@gamil..com"
+    },
+    {
+      "id": "21",
+      "username": "vijay",
+      "email": "vijay@gmail.com"
     }
   ],
   "todos": [

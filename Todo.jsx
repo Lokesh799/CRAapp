@@ -1,12 +1,15 @@
 import axios from "axios";
 import React, { useEffect, } from "react";
 import { useParams} from "react-router-dom";
+import { viewTodo } from "../actions";
+import { useSelector, useDispatch } from 'react-redux';
 
-  const Todo =() =>{
-    const {id}= useParams();
-    console.log(id)
-    const [todo, setTodo] = React.useState([]);
-
+function Todo (props) {
+  const dispatch = useDispatch();
+  const viewTodos = useSelector((state) => state.viewTodos.viewTodo); 
+  
+  const {id}=useParams();  
+    
     useEffect(()=>{
       loadUser();
     },[])
@@ -14,7 +17,8 @@ import { useParams} from "react-router-dom";
       const loadUser= async () =>{
         const res = await axios.get(`http://localhost:3008/users/${id}/todos` );
         console.log(res)
-        setTodo(res.data)
+        const todoAction=viewTodo(res.data);
+        dispatch(todoAction);
     }
 
     return(
@@ -23,7 +27,7 @@ import { useParams} from "react-router-dom";
             <div>
               <ul>
                 <h5 className ="text-danger">UserID</h5>
-                {todo.map(post =>(
+                {viewTodos.map(post =>(
                   <li key={post.id}>{post.userId}</li>
         ))}
           </ul>
@@ -31,7 +35,7 @@ import { useParams} from "react-router-dom";
               <div>
                 <ul>
                   <h5 className ="text-danger">ID</h5>
-                    {todo.map(post =>(
+                    {viewTodos.map(post =>(
                       <li key={post.id}>{post.id}</li>
         ))}
           </ul>
@@ -39,7 +43,7 @@ import { useParams} from "react-router-dom";
               <div>
                 <ul>
                   <h5 className ="text-danger">status</h5>
-                    {todo.map(post =>(
+                    {viewTodos.map(post =>(
                       <li key={post.id}>{post.completed? "completed" : "Not completed"}</li>
         ))}  
           </ul>
@@ -48,6 +52,5 @@ import { useParams} from "react-router-dom";
     </>
     );
  }
-
 
 export default Todo

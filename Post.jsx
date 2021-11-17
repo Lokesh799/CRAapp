@@ -2,22 +2,26 @@ import axios from "axios";
 import React, { useEffect, } from "react";
 import { useParams} from "react-router-dom";
 import { Link } from "react-router-dom";
+import { viewPost } from "../actions";
+import { useSelector, useDispatch } from "react-redux";
 
-  const Post =() =>{
-    const {id}= useParams();
-    console.log(id)
-    const [post, setPost] = React.useState([]);
+function Post (props) {
+  const dispatch = useDispatch();
+  const post = useSelector((state) => state.viewPosts.viewPost);  
+  
+  const {id}=useParams(); 
 
     useEffect(()=>{
       loadUser();
-    },[])
+    },[]);
 
       const loadUser= async () =>{
         const res = await axios.get(`http://localhost:3008/users/${id}/posts`);
         console.log(res)
-        setPost(res.data)
+        const postAction= viewPost(res.data)
+        dispatch(postAction);
     }
-
+  
     return(
         <>
       <div className ="d-flex flex-row bd-highlight mb-3">

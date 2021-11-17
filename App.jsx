@@ -5,7 +5,7 @@ import Todo from './Todo';
 import Post from './Post';
 import Add from './Add';
 import EditUser from './EditUser';
-import Comment from './Comment';
+import Comment   from './Comment';
 
 const App=()=>{
   return(
@@ -41,4 +41,4 @@ const App=()=>{
     </>
   )
 }
-export default App
+export default App     

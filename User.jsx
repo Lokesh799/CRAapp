@@ -2,23 +2,30 @@
 import axios from "axios";
 import React, { useEffect, } from "react";
 import { Link } from "react-router-dom";
+import { getUser } from "../actions";
+import { useSelector, useDispatch } from 'react-redux';
 
-export default function User() {
-  const [post, setPost] = React.useState([]);
+
+export default function User (props) {
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state.users.user);
 
     useEffect(() => {
       axios.get("http://localhost:3008/users").then((response) => {
-        console.log(response)
-        setPost(response.data);
-        setPost(response.data.reverse())
+       console.log(response)
+       const getUserAction = getUser(response.data);
+        dispatch(getUserAction);
+        console.log(users)
+       // setPost(response.data.reverse())
     });
   }, []);
 
-  if (!post) return null;
+  if (!users) return "Loading...";
 
     return (
       <>
         <div>
+        
         <table className="table">
       <thead>
         <tr>
@@ -29,15 +36,15 @@ export default function User() {
       </thead>
       <tbody>
         {
-          post.map(post =>(
+          users.map(user =>(
         <tr>
-          <td key={post.id}>{post.id}</td>
-          <td >{post.username}</td>
-          <td >{post.email}</td>
+          <td key={user.id}>{user.id}</td>
+          <td >{user.username}</td>
+          <td >{user.email}</td>
           <td>
-        <Link className="btn btn-primary" to={`/Post/${post.id}`}>ViewPost</Link>
-        <Link className="btn btn-primary" to={`/Todo/${post.id}`}>ViewTodo</Link>
-        <Link className="btn btn-primary" to={`/EditUser/${post.id}`}>Edit</Link>
+        <Link className="btn btn-primary" to={`/Post/${user.id}`}>ViewPost</Link> 
+        <Link className="btn btn-primary"  to={`/Todo/${user.id}`}>ViewTodo</Link>
+        <Link className="btn btn-primary" to={`/EditUser/${user.id}`}>Edit</Link>
       </td>
       </tr>
       ))}

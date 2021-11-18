@@ -1,27 +1,9 @@
 {
   "users": [
     {
-      "name": "Leanne Heen",
-      "username": "Bret kumar rahul patel",
-      "email": "Sincere@april.bizrrr",
-      "address": {
-        "street": "Kulas Light",
-        "suite": "Apt. 556",
-        "city": "Gwenborough",
-        "zipcode": "92998-3874",
-        "geo": {
-          "lat": "-37.3159",
-          "lng": "81.1496"
-        }
-      },
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "company": {
-        "name": "Romaguera-Crona",
-        "catchPhrase": "Multi-layered client-server neural-net",
-        "bs": "harness real-time e-markets"
-      },
-      "id": 1
+      "id": 1,
+      "username": "lokesh patel",
+      "email": "lokeshpatel43@gmail.com"
     },
     {
       "id": 2,
@@ -72,7 +54,7 @@
     {
       "id": 4,
       "name": "Patricia Lebsack",
-      "username": "Karianne",
+      "username": "Karianne patel",
       "email": "Julianne.OConner@kory.org",
       "address": {
         "street": "Hoeger Mall",
@@ -164,7 +146,7 @@
     {
       "id": 8,
       "name": "Nicholas Runolfsdottir V",
-      "username": "Maxime_Nienow",
+      "username": "Maxime_Nienow patel",
       "email": "Sherwood@rosamond.me",
       "address": {
         "street": "Ellsworth Summit",
@@ -187,7 +169,7 @@
     {
       "id": 9,
       "name": "Glenna Reichert",
-      "username": "Delphine",
+      "username": "Delphine patel",
       "email": "Chaim_McDermott@dana.io",
       "address": {
         "street": "Dayna Park",
@@ -232,7 +214,7 @@
     },
     {
       "id": "11",
-      "username": "lokesh",
+      "username": "lokeshji",
       "email": "llokeshpatel"
     },
     {

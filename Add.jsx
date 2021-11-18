@@ -22,7 +22,7 @@ import { useSelector, useDispatch } from 'react-redux';
         await axios.post('http://localhost:3008/users',addUsers);
         history.push('/User');
       };
-
+  
     return(
         <div className="wrapper">
         <form onSubmit={(e)=>onSubmit(e)}>

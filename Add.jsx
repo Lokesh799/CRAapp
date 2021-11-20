@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import { addUser } from "../actions";
 import { useSelector, useDispatch } from 'react-redux';
+import { addUserRequest } from "../thunks/add";
 
 
- function Add (props) {
+function Add (props) {
   const dispatch = useDispatch();
   const addUsers = useSelector((state) => state.addUsers.adduser);
 
@@ -13,13 +13,12 @@ import { useSelector, useDispatch } from 'react-redux';
 
     const{ id, username, email }=addUsers;
       const handle = e => {
-       const getAddAction= addUser({...addUsers,[e.target.name]: e.target.value});
-        dispatch(getAddAction);
+        dispatch (addUser({...addUsers,[e.target.name]: e.target.value}));
       };
 
-      const onSubmit= async(e)=> {
+      const onSubmit= async(e)=>   {
         e.preventDefault();
-        await axios.post('http://localhost:3008/users',addUsers);
+        dispatch(addUserRequest(addUsers))
         history.push('/User');
       };
   

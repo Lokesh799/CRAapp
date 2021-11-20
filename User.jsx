@@ -1,9 +1,10 @@
 
-import axios from "axios";
+//import axios from "axios";
 import React, { useEffect, } from "react";
 import { Link } from "react-router-dom";
-import { getUser } from "../actions";
+//import { getUser } from "../actions";
 import { useSelector, useDispatch } from 'react-redux';
+import { getUsers } from "../thunks/users";
 
 
 export default function User (props) {
@@ -11,16 +12,18 @@ export default function User (props) {
   const users = useSelector((state) => state.users.user);
 
     useEffect(() => {
-      axios.get("http://localhost:3008/users").then((response) => {
-       console.log(response)
-       const getUserAction = getUser(response.data);
-        dispatch(getUserAction);
-        console.log(users)
-       // setPost(response.data.reverse())
-    });
+    //   axios.get("http://localhost:3008/users").then((response) => {
+    //    console.log(response)
+    //    const getUserAction = getUser(response.data);
+    //     dispatch(getUserAction);
+    //     console.log(users)
+    //     setPost(response.data.reverse())
+    // });
+    dispatch(getUsers());
+
   }, []);
 
-  if (!users) return "Loading...";
+  //if (!users) return "Loading...";
 
     return (
       <>

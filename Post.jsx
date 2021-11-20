@@ -1,9 +1,10 @@
-import axios from "axios";
+//import axios from "axios";
 import React, { useEffect, } from "react";
 import { useParams} from "react-router-dom";
 import { Link } from "react-router-dom";
-import { viewPost } from "../actions";
+//import { viewPost } from "../actions";
 import { useSelector, useDispatch } from "react-redux";
+import { postRequest } from "../thunks/showPost";
 
 function Post (props) {
   const dispatch = useDispatch();
@@ -12,15 +13,15 @@ function Post (props) {
   const {id}=useParams(); 
 
     useEffect(()=>{
-      loadUser();
+      dispatch(postRequest(id));
     },[]);
 
-      const loadUser= async () =>{
-        const res = await axios.get(`http://localhost:3008/users/${id}/posts`);
-        console.log(res)
-        const postAction= viewPost(res.data)
-        dispatch(postAction);
-    }
+    //   const loadUser= async () =>{
+    //     const res = await axios.get(`http://localhost:3008/users/${id}/posts`);
+    //     console.log(res)
+    //     const postAction= viewPost(res.data)
+    //     dispatch(postAction);
+    // }
   
     return(
         <>

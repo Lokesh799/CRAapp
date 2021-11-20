@@ -1,8 +1,9 @@
-import axios from "axios";
+//import axios from "axios";
 import React, { useEffect, } from "react";
 import { useParams} from "react-router-dom";
-import { viewComment } from "../actions";
+//import { viewComment } from "../actions";
 import { useSelector, useDispatch } from "react-redux";
+import { commentRequest } from "../thunks/showComment";
 
 function Comment (props) {
   const dispatch = useDispatch();
@@ -11,15 +12,15 @@ function Comment (props) {
   const {id}=useParams(); 
 
     useEffect(()=>{
-      loadUser();
+      dispatch(commentRequest(id));
     },[])
 
-      const loadUser= async () =>{
-        const res = await axios.get(`http://localhost:3008/posts/${id}/comments` );
-        console.log(res)
-         const commentAction= viewComment(res.data)
-         dispatch(commentAction)
-    }
+    //   const loadUser= async () =>{
+    //     const res = await axios.get(`http://localhost:3008/posts/${id}/comments` );
+    //     console.log(res)
+    //      const commentAction= viewComment(res.data)
+    //      dispatch(commentAction)
+    // }
 
     return(
         <>

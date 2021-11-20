@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useHistory , useParams} from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 import { editUser } from "../actions";
 import { showModel } from "../actions";
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-bootstrap/Modal'
 import {Button} from  'react-bootstrap'
+import { editUserRequest, PutRequest } from "../thunks/update";
 
 
 function EditUser (props) {
@@ -30,16 +31,18 @@ function EditUser (props) {
     }
       const Submit= async(e)=> {
         e.preventDefault();
-        await axios.put(`http://localhost:3008/users/${id}` ,edit);
+        // await axios.put(`http://localhost:3008/users/${id}` ,edit);
+        dispatch(PutRequest(edit,id))
         history.push('/User');
       
       };
       useEffect(() => {
-        axios.get(`http://localhost:3008/users/${id}`).then((response) => {
-          console.log(response)
-          const getAction= editUser(response.data);
-          dispatch(getAction);
-      });
+      //   axios.get(`http://localhost:3008/users/${id}`).then((response) => {
+      //     console.log(response)
+      //     const getAction= editUser(response.data);
+      //     dispatch(getAction);
+      // });
+              dispatch(editUserRequest(id))
     }, []);
 
       return (
